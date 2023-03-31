@@ -616,7 +616,9 @@ kibana_url
 ``kibana_url``: The base url of the Kibana application. If not specified, a URL will be constructed using ``es_host``
 and ``es_port``.
 
-This value will be used if ``generate_kibana_discover_url`` is true and ``kibana_discover_app_url`` is a relative path
+This value will be used if ``generate_kibana_discover_url`` is true
+
+If this value is specified along with ``kibana_discover_app_url``, then ``kibana_discover_app_url`` should be a relative path.
 
 (Optional, string, default ``http://<es_host>:<es_port>/_plugin/kibana/``)
 
@@ -687,7 +689,8 @@ kibana_discover_app_url
 
 ``kibana_discover_app_url``: The url of the Kibana Discover application used to generate the ``kibana_discover_url`` variable.
 This value can use `$VAR` and `${VAR}` references to expand environment variables.
-This value should be relative to the base kibana url defined by ``kibana_url`` and will vary depending on your installation.
+If ``kibana_url`` is specified as well then this value should be relative to the base kibana url defined by ``kibana_url`` and will vary depending on your installation.
+If ``kibana_url`` is not specified, then this value should include the base url too.
 
 ``kibana_discover_app_url: app/discover#/``
 
